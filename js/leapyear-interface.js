@@ -1,18 +1,12 @@
-// business logic
-var leapYear = function(year) {
-  if ((year % 4 === 0) && (year % 100 !== 0) || (year % 400 === 0)) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
 // user interface logic
+var LeapYear = require('./../js/leapyear.js').leapYearModule;
+
 $(document).ready(function() {
   $("form#leap-year").submit(function(event) {
     event.preventDefault();
     var year = parseInt($("input#year").val());
-    var result = leapYear(year);
+    var simpleLeapYear = new LeapYear("1999");
+    var result = simpleLeapYear.leapYear(year);
 
     $(".year").text(year);
 
